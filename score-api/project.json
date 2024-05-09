@@ -1,0 +1,24 @@
+{
+  "name": "score-api",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "score-api/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "score-api:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "score-api:build:development"
+        },
+        "production": {
+          "buildTarget": "score-api:build:production"
+        }
+      }
+    }
+  }
+}
