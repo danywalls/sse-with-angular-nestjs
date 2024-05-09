@@ -1,0 +1,20 @@
+<div class="flex justify-center items-center h-screen">
+  <div class="bg-gray-800 text-white p-4 rounded-lg text-center">
+    <div class="flex justify-between mb-2">
+      <span class="flex-grow font-bold text-yellow-500 p-4">Lakers</span>
+      <span class="flex-grow font-bold text-blue-500 p-4">Nuggets</span>
+    </div>
+    <div class="flex justify-between">
+      @if (gameScore$ | async; as score) {
+      <span class="text-4xl font-bold w-1/2">{{score.lakers}}</span>
+      <span class="text-4xl font-bold w-1/2">{{score.denver}}</span>
+      }
+    </div>
+    <div class="mt-4">
+      <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full mr-2"
+        (click)="start()">Start</button>
+      <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full"
+        (click)="stop()">Stop</button>
+    </div>
+  </div>
+</div>
