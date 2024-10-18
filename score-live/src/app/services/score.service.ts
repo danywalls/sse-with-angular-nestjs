@@ -1,11 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { Subject, startWith, tap } from 'rxjs';
+import { Subject, startWith } from 'rxjs';
 export type GameScore = {
   lakers: number;
   denver: number;
 };
-
+const initialState = {
+  lakers: 0,
+  denver: 0,
+};
 @Injectable({
   providedIn: 'root',
 })
@@ -38,8 +41,12 @@ export class ScoreService {
   }
 
   public stop(): void {
+    this.sseSource.close();
+      
     this.http.post(`${this.API}/stop`, {}).subscribe(() => {
       console.log('✋🏼');
+      this.scoreSubject$.next(initialState);
+      this.scoreSubject$.complete();
     });
   }
 }
